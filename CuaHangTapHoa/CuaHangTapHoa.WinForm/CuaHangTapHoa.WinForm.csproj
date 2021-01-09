@@ -57,11 +57,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HangHoaBox.cs">
+    <Compile Include="frmQuanLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLy.Designer.cs">
+      <DependentUpon>frmQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uHangHoaBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HangHoaBox.Designer.cs">
-      <DependentUpon>HangHoaBox.cs</DependentUpon>
+    <Compile Include="uHangHoaBox.Designer.cs">
+      <DependentUpon>uHangHoaBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +81,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HangHoaBox.resx">
-      <DependentUpon>HangHoaBox.cs</DependentUpon>
+    <EmbeddedResource Include="frmQuanLy.resx">
+      <DependentUpon>frmQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uHangHoaBox.resx">
+      <DependentUpon>uHangHoaBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -98,5 +98,11 @@ namespace CuaHangTapHoa.WinForm
 			var dsHangHoa = HangHoaDAO.Instance.SearchHangHoaByTenHangHoa(keyword);
 			RenderDanhSachHangHoa(dsHangHoa);
 		}
+
+		private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmQuanLy frm = new frmQuanLy();
+			frm.ShowDialog();
+		}
 	}
 }
