@@ -126,6 +126,7 @@
 			this.btnDelete.Size = new System.Drawing.Size(32, 32);
 			this.btnDelete.TabIndex = 0;
 			this.btnDelete.UseVisualStyleBackColor = false;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
 			// txtTongTien
 			// 

@@ -21,5 +21,10 @@ namespace CuaHangTapHoa.WinForm
 			var imagePath = DirectoryUtils.GetPathTo("data", "hang-hoa", anhMinhHoa) + ".jpg";
 			pbHinhMinhHoa.ImageLocation = imagePath;
 		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			this.Parent.Controls.Remove(this);
+		}
 	}
 }
