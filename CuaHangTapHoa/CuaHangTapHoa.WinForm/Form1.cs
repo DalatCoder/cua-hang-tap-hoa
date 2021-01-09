@@ -90,5 +90,13 @@ namespace CuaHangTapHoa.WinForm
 			var dsHangHoa = HangHoaDAO.Instance.GetAllHangHoaByLoaiHangHoa(selectedItem.Id);
 			RenderDanhSachHangHoa(dsHangHoa);
 		}
+
+		private void txtTimKiemHangHoa_TextChanged(object sender, EventArgs e)
+		{
+			string keyword = txtTimKiemHangHoa.Text;
+
+			var dsHangHoa = HangHoaDAO.Instance.SearchHangHoaByTenHangHoa(keyword);
+			RenderDanhSachHangHoa(dsHangHoa);
+		}
 	}
 }

@@ -158,6 +158,7 @@
 			this.txtTimKiemHangHoa.Name = "txtTimKiemHangHoa";
 			this.txtTimKiemHangHoa.Size = new System.Drawing.Size(288, 28);
 			this.txtTimKiemHangHoa.TabIndex = 0;
+			this.txtTimKiemHangHoa.TextChanged += new System.EventHandler(this.txtTimKiemHangHoa_TextChanged);
 			// 
 			// groupBox3
 			// 

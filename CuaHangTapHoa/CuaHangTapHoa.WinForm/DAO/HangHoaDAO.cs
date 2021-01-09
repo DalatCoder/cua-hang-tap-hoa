@@ -61,5 +61,23 @@ namespace CuaHangTapHoa.WinForm.DAO
 
 			return dsHangHoa;
 		}
+
+		public List<HangHoaRead> SearchHangHoaByTenHangHoa(string tenHangHoa)
+		{
+			string query = "EXEC usp_HangHoa_SearchByName @TenHang";
+
+			DataTable data = DataProvider.Instance.ExecuteQuery(query, tenHangHoa);
+			List<HangHoaRead> dsHangHoa = new List<HangHoaRead>();
+
+			if (data.Rows.Count > 0)
+			{
+				foreach (DataRow row in data.Rows)
+				{
+					dsHangHoa.Add(new HangHoaRead(row));
+				}
+			}
+
+			return dsHangHoa;
+		}
 	}
 }
