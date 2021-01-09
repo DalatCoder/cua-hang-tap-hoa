@@ -83,6 +83,7 @@
             0,
             0,
             0});
+			this.nmSoLuong.ValueChanged += new System.EventHandler(this.nmSoLuong_ValueChanged);
 			// 
 			// nmGiaBan
 			// 
@@ -110,6 +111,7 @@
             0,
             0,
             0});
+			this.nmGiaBan.ValueChanged += new System.EventHandler(this.nmGiaBan_ValueChanged);
 			// 
 			// btnDelete
 			// 

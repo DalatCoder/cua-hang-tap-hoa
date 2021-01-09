@@ -44,11 +44,28 @@ namespace CuaHangTapHoa.WinForm
 			}
 		}
 
+		void AddHangHoaDuocChon(HangHoaRead hangHoa)
+		{
+			foreach (uHangHoaItem item in flpSanPhamDaChon.Controls)
+			{
+				if (item.HangHoaId == hangHoa.Id)
+				{
+					item.AddSoLuong(1);
+					return;
+				}
+			}
+
+			uHangHoaItem newItem = new uHangHoaItem(hangHoa);
+			newItem.Width = flpSanPhamDaChon.Width - 30;
+			flpSanPhamDaChon.Controls.Add(newItem);
+		}
+
 		private void HangHoaItem_click(object sender, EventArgs e)
 		{
 			uFrmHangHoa frm = sender as uFrmHangHoa;
 			HangHoaRead clickedHangHoa = frm.Tag as HangHoaRead;
-			MessageBox.Show(clickedHangHoa.TenHang);
+
+			AddHangHoaDuocChon(clickedHangHoa);
 		}
 	}
 }
