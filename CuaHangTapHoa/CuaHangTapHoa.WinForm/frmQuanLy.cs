@@ -26,6 +26,7 @@ namespace CuaHangTapHoa.WinForm
 			dgvHangHoa.DataSource = dsHangHoaBinding;
 			LoadDanhSachHangHoaAll();
 			LoadDanhSachLoaiHangHoa();
+			LoadDanhSachDonViTinh();
 			AddDataBindingHangHoa();
 
 			InitThongKeBar();
@@ -44,6 +45,13 @@ namespace CuaHangTapHoa.WinForm
 			cbHangHoaLoai.ValueMember = "Id";
 		}
 
+		void LoadDanhSachDonViTinh()
+		{
+			cbHangHoaDVT.DataSource = DonViTinhDAO.Instance.GetAllDonViTinh();
+			cbHangHoaDVT.DisplayMember = "TenDonViTinh";
+			cbHangHoaDVT.ValueMember = "Id";
+		}
+
 		void AddDataBindingHangHoa()
 		{
 			txtHangHoaID.DataBindings.Add(new Binding("Text", dgvHangHoa.DataSource, "Id", true, DataSourceUpdateMode.Never));
@@ -55,6 +63,7 @@ namespace CuaHangTapHoa.WinForm
 			nmHangHoaSoLuongTonKho.DataBindings.Add(new Binding("Value", dgvHangHoa.DataSource, "TonKho", true, DataSourceUpdateMode.Never));
 			pbHangHoa.DataBindings.Add(new Binding("ImageLocation", dgvHangHoa.DataSource, "FullImagePath", true, DataSourceUpdateMode.Never));
 			cbHangHoaLoai.DataBindings.Add(new Binding("Text", dgvHangHoa.DataSource, "TenLoai", true, DataSourceUpdateMode.Never));
+			cbHangHoaDVT.DataBindings.Add(new Binding("Text", dgvHangHoa.DataSource, "DonViTinh", true, DataSourceUpdateMode.Never));
 			rdHangHoaActive.DataBindings.Add(new Binding("Checked", dgvHangHoa.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 			//rdHangHoaInactive.DataBindings.Add(new Binding("Checked", dgvHangHoa.DataSource, "TrangThai", true, DataSourceUpdateMode.Never));
 		}
@@ -78,13 +87,22 @@ namespace CuaHangTapHoa.WinForm
 		void InitThongKeBar()
 		{
 			List<LoaiHangHoa> dsLoaiHangHoa = LoaiHangHoaDAO.Instance.GetAllLoaiHangHoa();
+
 			dsLoaiHangHoa.Insert(0, new LoaiHangHoa() { Id = 0, TenLoai = "Tất cả" });
 			cbHangHoaTimKiemLoaiHang.DataSource = dsLoaiHangHoa;
 			cbHangHoaTimKiemLoaiHang.DisplayMember = "TenLoai";
 			cbHangHoaTimKiemLoaiHang.ValueMember = "Id";
 
+			List<DonViTinh> dsDonViTinh = DonViTinhDAO.Instance.GetAllDonViTinh();
+
+			dsDonViTinh.Insert(0, new DonViTinh() { Id = 0, TenDonViTinh = "Tất cả" });
+			cbHHTimKiemDVT.DataSource = dsDonViTinh;
+			cbHHTimKiemDVT.DisplayMember = "TenDonViTinh";
+			cbHHTimKiemDVT.ValueMember = "Id";
+
 			cbHHTimKiemTrangThai.SelectedIndex = -1;
 			cbHangHoaTimKiemLoaiHang.SelectedIndex = -1;
+			cbHHTimKiemDVT.SelectedIndex = -1;
 			cbHangHoaSapXep.SelectedIndex = 0;
 		}
 	}
