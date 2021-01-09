@@ -139,6 +139,7 @@ CREATE TABLE [dbo].[ChiTietDonHang]
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), -- Primary Key column
     DonHangId INT NOT NULL,
     HangHoaId INT NOT NULL,
+    TrangThai INT NOT NULL DEFAULT 0, -- 0: Bán đủ, 1: Bán lẻ
     GiaTaiThoiDiemBan DECIMAL NOT NULL,
     SoLuong INT NOT NULL,    
     GhiChu NVARCHAR(1000) NULL,    
