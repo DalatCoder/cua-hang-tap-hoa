@@ -97,7 +97,7 @@ GO
 CREATE TABLE [dbo].[HangHoa]
 (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), -- Primary Key column
-    TenHang NVARCHAR NOT NULL,
+    TenHang NVARCHAR(300) NOT NULL,
     LoaiHangHoaId INT NOT NULL,
     GiaVon DECIMAL NOT NULL,
     GiaBan DECIMAL NOT NULL,

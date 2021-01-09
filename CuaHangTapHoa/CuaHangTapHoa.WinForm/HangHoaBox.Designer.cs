@@ -68,7 +68,9 @@
 			// 
 			// pbHinhMinhHoa
 			// 
+			this.pbHinhMinhHoa.Cursor = System.Windows.Forms.Cursors.Default;
 			this.pbHinhMinhHoa.Image = ((System.Drawing.Image)(resources.GetObject("pbHinhMinhHoa.Image")));
+			this.pbHinhMinhHoa.InitialImage = null;
 			this.pbHinhMinhHoa.Location = new System.Drawing.Point(3, 3);
 			this.pbHinhMinhHoa.Name = "pbHinhMinhHoa";
 			this.pbHinhMinhHoa.Size = new System.Drawing.Size(94, 64);
@@ -81,9 +83,9 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.Controls.Add(this.pbHinhMinhHoa);
 			this.Controls.Add(this.txtSoTien);
 			this.Controls.Add(this.txtTieuDe);
+			this.Controls.Add(this.pbHinhMinhHoa);
 			this.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.Name = "uFrmHangHoa";
 			this.Size = new System.Drawing.Size(100, 120);
