@@ -1,0 +1,17 @@
+USE QL_CuaHangTapHoa
+GO
+
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'usp_LoaiHangHoa_GetAll'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.usp_LoaiHangHoa_GetAll
+GO
+
+CREATE PROCEDURE dbo.usp_LoaiHangHoa_GetAll    
+AS
+    SELECT * FROM LoaiHangHoa
+GO

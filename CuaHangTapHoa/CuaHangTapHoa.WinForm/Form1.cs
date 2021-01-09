@@ -21,20 +21,28 @@ namespace CuaHangTapHoa.WinForm
 
 		private void frmMain_Load(object sender, EventArgs e)
 		{
-			LoadHangHoa();
+			LoadLoaiHangHoa();
+			// LoadHangHoa();
 		}
 
-		void InitHangHoaItemWidth()
+		void LoadLoaiHangHoa()
 		{
-			foreach (uHangHoaItem item in flpSanPhamDaChon.Controls)
-			{
-				item.Width = flpSanPhamDaChon.Width - 30;
-			}
+			List<LoaiHangHoa> dsLoaiHangHoa = LoaiHangHoaDAO.Instance.GetAllLoaiHangHoa();
+			dsLoaiHangHoa.Insert(0, new LoaiHangHoa() { Id = 0, TenLoai = "Tất cả" });
+			cbLoaiHangHoa.DataSource = dsLoaiHangHoa;
+			cbLoaiHangHoa.DisplayMember = "TenLoai";
+			cbLoaiHangHoa.ValueMember = "Id";
 		}
 
 		void LoadHangHoa()
 		{
 			List<HangHoaRead> dsHangHoa = HangHoaDAO.Instance.GetAllHangHoa();
+			RenderDanhSachHangHoa(dsHangHoa);
+		}
+
+		void RenderDanhSachHangHoa(List<HangHoaRead> dsHangHoa)
+		{
+			flpDanhSachHangHoa.Controls.Clear();
 			foreach (HangHoaRead hangHoa in dsHangHoa)
 			{
 				uFrmHangHoa box = new uFrmHangHoa(hangHoa.TenHang, hangHoa.GiaBanStr, hangHoa.HinhAnh);
@@ -42,6 +50,14 @@ namespace CuaHangTapHoa.WinForm
 				box.Click += HangHoaItem_click;
 				flpDanhSachHangHoa.Controls.Add(box);
 			}
+		}
+
+		private void HangHoaItem_click(object sender, EventArgs e)
+		{
+			uFrmHangHoa frm = sender as uFrmHangHoa;
+			HangHoaRead clickedHangHoa = frm.Tag as HangHoaRead;
+
+			AddHangHoaDuocChon(clickedHangHoa);
 		}
 
 		void AddHangHoaDuocChon(HangHoaRead hangHoa)
@@ -60,12 +76,19 @@ namespace CuaHangTapHoa.WinForm
 			flpSanPhamDaChon.Controls.Add(newItem);
 		}
 
-		private void HangHoaItem_click(object sender, EventArgs e)
+		private void cbLoaiHangHoa_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			uFrmHangHoa frm = sender as uFrmHangHoa;
-			HangHoaRead clickedHangHoa = frm.Tag as HangHoaRead;
+			LoaiHangHoa selectedItem = cbLoaiHangHoa.SelectedItem as LoaiHangHoa;
+			if (selectedItem == null) return;
 
-			AddHangHoaDuocChon(clickedHangHoa);
+			if (selectedItem.Id == 0)
+			{
+				LoadHangHoa();
+				return;
+			}
+
+			var dsHangHoa = HangHoaDAO.Instance.GetAllHangHoaByLoaiHangHoa(selectedItem.Id);
+			RenderDanhSachHangHoa(dsHangHoa);
 		}
 	}
 }

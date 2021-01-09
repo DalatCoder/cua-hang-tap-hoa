@@ -30,7 +30,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 			connectionSTR = "Data Source=.;Initial Catalog=QL_CuaHangTapHoa;Integrated Security=True";
 		}
 
-		public DataTable ExecuteQuery(string query, object[] parameter = null)
+		public DataTable ExecuteQuery(string query, params object[] parameters)
 		{
 			DataTable data = new DataTable();
 
@@ -40,7 +40,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 
 				SqlCommand command = new SqlCommand(query, connection);
 
-				if (parameter != null)
+				if (parameters != null && parameters.Length > 0)
 				{
 					string[] listParams = query.Split(' ');
 					int i = 0;
@@ -49,7 +49,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 					{
 						if (item.StartsWith("@"))
 						{
-							command.Parameters.AddWithValue(item, parameter[i]);
+							command.Parameters.AddWithValue(item, parameters[i]);
 							i += 1;
 						}
 					}
@@ -65,7 +65,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 			return data;
 		}
 
-		public int ExecuteNonQuery(string query, object[] parameter = null)
+		public int ExecuteNonQuery(string query, params object[] parameters)
 		{
 			int numRowEffected = 0;
 
@@ -75,7 +75,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 
 				SqlCommand command = new SqlCommand(query, connection);
 
-				if (parameter != null)
+				if (parameters != null && parameters.Length > 0)
 				{
 					string[] listParams = query.Split(' ');
 					int i = 0;
@@ -84,7 +84,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 					{
 						if (item.StartsWith("@"))
 						{
-							command.Parameters.AddWithValue(item, parameter[i]);
+							command.Parameters.AddWithValue(item, parameters[i]);
 							i += 1;
 						}
 					}
@@ -98,7 +98,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 			return numRowEffected;
 		}
 
-		public object ExecuteScalar(string query, object[] parameter = null)
+		public object ExecuteScalar(string query, params object[] parameters)
 		{
 			object data = null;
 
@@ -108,7 +108,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 
 				SqlCommand command = new SqlCommand(query, connection);
 
-				if (parameter != null)
+				if (parameters != null && parameters.Length > 0)
 				{
 					string[] listParams = query.Split(' ');
 					int i = 0;
@@ -117,7 +117,7 @@ namespace CuaHangTapHoa.WinForm.DAO
 					{
 						if (item.StartsWith("@"))
 						{
-							command.Parameters.AddWithValue(item, parameter[i]);
+							command.Parameters.AddWithValue(item, parameters[i]);
 							i += 1;
 						}
 					}

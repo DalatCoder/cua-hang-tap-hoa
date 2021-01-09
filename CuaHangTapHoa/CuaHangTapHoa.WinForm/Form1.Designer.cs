@@ -37,26 +37,26 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.flpDanhSachHangHoa = new System.Windows.Forms.FlowLayoutPanel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.cbLoaiHangHoa = new System.Windows.Forms.ComboBox();
+			this.txtTimKiemHangHoa = new System.Windows.Forms.TextBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.btnDanhSachKH = new System.Windows.Forms.Button();
+			this.btnThemKH = new System.Windows.Forms.Button();
+			this.txtTenKH = new System.Windows.Forms.ComboBox();
+			this.txtTimKiemKH = new System.Windows.Forms.TextBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.flpSanPhamDaChon = new System.Windows.Forms.FlowLayoutPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnHuy = new System.Windows.Forms.Button();
+			this.btnThanhToan = new System.Windows.Forms.Button();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.txtGhiChu = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.txtTongTien = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
@@ -133,8 +133,8 @@
 			// 
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.Controls.Add(this.comboBox1);
-			this.groupBox2.Controls.Add(this.textBox1);
+			this.groupBox2.Controls.Add(this.cbLoaiHangHoa);
+			this.groupBox2.Controls.Add(this.txtTimKiemHangHoa);
 			this.groupBox2.Location = new System.Drawing.Point(3, 319);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(634, 56);
@@ -142,31 +142,32 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Tìm kiếm nhanh hàng hóa";
 			// 
-			// comboBox1
+			// cbLoaiHangHoa
 			// 
-			this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(328, 21);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(288, 28);
-			this.comboBox1.TabIndex = 1;
+			this.cbLoaiHangHoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbLoaiHangHoa.FormattingEnabled = true;
+			this.cbLoaiHangHoa.Location = new System.Drawing.Point(328, 21);
+			this.cbLoaiHangHoa.Name = "cbLoaiHangHoa";
+			this.cbLoaiHangHoa.Size = new System.Drawing.Size(288, 28);
+			this.cbLoaiHangHoa.TabIndex = 1;
+			this.cbLoaiHangHoa.SelectedIndexChanged += new System.EventHandler(this.cbLoaiHangHoa_SelectedIndexChanged);
 			// 
-			// textBox1
+			// txtTimKiemHangHoa
 			// 
-			this.textBox1.Location = new System.Drawing.Point(12, 21);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(288, 28);
-			this.textBox1.TabIndex = 0;
+			this.txtTimKiemHangHoa.Location = new System.Drawing.Point(12, 21);
+			this.txtTimKiemHangHoa.Name = "txtTimKiemHangHoa";
+			this.txtTimKiemHangHoa.Size = new System.Drawing.Size(288, 28);
+			this.txtTimKiemHangHoa.TabIndex = 0;
 			// 
 			// groupBox3
 			// 
 			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox3.Controls.Add(this.label4);
 			this.groupBox3.Controls.Add(this.label3);
-			this.groupBox3.Controls.Add(this.button4);
-			this.groupBox3.Controls.Add(this.button3);
-			this.groupBox3.Controls.Add(this.comboBox2);
-			this.groupBox3.Controls.Add(this.textBox2);
+			this.groupBox3.Controls.Add(this.btnDanhSachKH);
+			this.groupBox3.Controls.Add(this.btnThemKH);
+			this.groupBox3.Controls.Add(this.txtTenKH);
+			this.groupBox3.Controls.Add(this.txtTimKiemKH);
 			this.groupBox3.Location = new System.Drawing.Point(646, 27);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(476, 100);
@@ -192,44 +193,44 @@
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Tên khách hàng:";
 			// 
-			// button4
+			// btnDanhSachKH
 			// 
-			this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-			this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button4.FlatAppearance.BorderSize = 0;
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Location = new System.Drawing.Point(370, 24);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(32, 32);
-			this.button4.TabIndex = 3;
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnDanhSachKH.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDanhSachKH.BackgroundImage")));
+			this.btnDanhSachKH.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.btnDanhSachKH.FlatAppearance.BorderSize = 0;
+			this.btnDanhSachKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDanhSachKH.Location = new System.Drawing.Point(370, 24);
+			this.btnDanhSachKH.Name = "btnDanhSachKH";
+			this.btnDanhSachKH.Size = new System.Drawing.Size(32, 32);
+			this.btnDanhSachKH.TabIndex = 3;
+			this.btnDanhSachKH.UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btnThemKH
 			// 
-			this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-			this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button3.FlatAppearance.BorderSize = 0;
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button3.Location = new System.Drawing.Point(413, 23);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(32, 32);
-			this.button3.TabIndex = 2;
-			this.button3.UseVisualStyleBackColor = true;
+			this.btnThemKH.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThemKH.BackgroundImage")));
+			this.btnThemKH.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.btnThemKH.FlatAppearance.BorderSize = 0;
+			this.btnThemKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnThemKH.Location = new System.Drawing.Point(413, 23);
+			this.btnThemKH.Name = "btnThemKH";
+			this.btnThemKH.Size = new System.Drawing.Size(32, 32);
+			this.btnThemKH.TabIndex = 2;
+			this.btnThemKH.UseVisualStyleBackColor = true;
 			// 
-			// comboBox2
+			// txtTenKH
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(143, 62);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(327, 28);
-			this.comboBox2.TabIndex = 2;
+			this.txtTenKH.FormattingEnabled = true;
+			this.txtTenKH.Location = new System.Drawing.Point(143, 62);
+			this.txtTenKH.Name = "txtTenKH";
+			this.txtTenKH.Size = new System.Drawing.Size(327, 28);
+			this.txtTenKH.TabIndex = 2;
 			// 
-			// textBox2
+			// txtTimKiemKH
 			// 
-			this.textBox2.Location = new System.Drawing.Point(143, 27);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(218, 28);
-			this.textBox2.TabIndex = 2;
+			this.txtTimKiemKH.Location = new System.Drawing.Point(143, 27);
+			this.txtTimKiemKH.Name = "txtTimKiemKH";
+			this.txtTimKiemKH.Size = new System.Drawing.Size(218, 28);
+			this.txtTimKiemKH.TabIndex = 2;
 			// 
 			// groupBox4
 			// 
@@ -256,34 +257,34 @@
 			// panel1
 			// 
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.button2);
-			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.btnHuy);
+			this.panel1.Controls.Add(this.btnThanhToan);
 			this.panel1.Location = new System.Drawing.Point(652, 326);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(476, 49);
 			this.panel1.TabIndex = 5;
 			// 
-			// button2
+			// btnHuy
 			// 
-			this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button2.Location = new System.Drawing.Point(296, 3);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(168, 43);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "Hủy";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnHuy.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnHuy.Location = new System.Drawing.Point(296, 3);
+			this.btnHuy.Name = "btnHuy";
+			this.btnHuy.Size = new System.Drawing.Size(168, 43);
+			this.btnHuy.TabIndex = 1;
+			this.btnHuy.Text = "Hủy";
+			this.btnHuy.UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// btnThanhToan
 			// 
-			this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Location = new System.Drawing.Point(3, 3);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(168, 43);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Thanh toán";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnThanhToan.Location = new System.Drawing.Point(3, 3);
+			this.btnThanhToan.Name = "btnThanhToan";
+			this.btnThanhToan.Size = new System.Drawing.Size(168, 43);
+			this.btnThanhToan.TabIndex = 0;
+			this.btnThanhToan.Text = "Thanh toán";
+			this.btnThanhToan.UseVisualStyleBackColor = true;
 			// 
 			// groupBox5
 			// 
@@ -299,22 +300,22 @@
 			// 
 			// panel3
 			// 
-			this.panel3.Controls.Add(this.textBox4);
+			this.panel3.Controls.Add(this.txtGhiChu);
 			this.panel3.Controls.Add(this.label2);
 			this.panel3.Location = new System.Drawing.Point(6, 71);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(467, 98);
 			this.panel3.TabIndex = 3;
 			// 
-			// textBox4
+			// txtGhiChu
 			// 
-			this.textBox4.BackColor = System.Drawing.Color.White;
-			this.textBox4.Location = new System.Drawing.Point(89, 9);
-			this.textBox4.Multiline = true;
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(369, 80);
-			this.textBox4.TabIndex = 1;
-			this.textBox4.Text = "Đây là ghi chú";
+			this.txtGhiChu.BackColor = System.Drawing.Color.White;
+			this.txtGhiChu.Location = new System.Drawing.Point(89, 9);
+			this.txtGhiChu.Multiline = true;
+			this.txtGhiChu.Name = "txtGhiChu";
+			this.txtGhiChu.Size = new System.Drawing.Size(369, 80);
+			this.txtGhiChu.TabIndex = 1;
+			this.txtGhiChu.Text = "Đây là ghi chú";
 			// 
 			// label2
 			// 
@@ -327,24 +328,24 @@
 			// 
 			// panel2
 			// 
-			this.panel2.Controls.Add(this.textBox3);
+			this.panel2.Controls.Add(this.txtTongTien);
 			this.panel2.Controls.Add(this.label1);
 			this.panel2.Location = new System.Drawing.Point(6, 27);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(464, 38);
 			this.panel2.TabIndex = 2;
 			// 
-			// textBox3
+			// txtTongTien
 			// 
-			this.textBox3.BackColor = System.Drawing.Color.White;
-			this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox3.Location = new System.Drawing.Point(196, 8);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.ReadOnly = true;
-			this.textBox3.Size = new System.Drawing.Size(252, 21);
-			this.textBox3.TabIndex = 1;
-			this.textBox3.Text = "120.000";
-			this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtTongTien.BackColor = System.Drawing.Color.White;
+			this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtTongTien.Location = new System.Drawing.Point(196, 8);
+			this.txtTongTien.Name = "txtTongTien";
+			this.txtTongTien.ReadOnly = true;
+			this.txtTongTien.Size = new System.Drawing.Size(252, 21);
+			this.txtTongTien.TabIndex = 1;
+			this.txtTongTien.Text = "120.000";
+			this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label1
 			// 
@@ -402,20 +403,20 @@
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnHuy;
+		private System.Windows.Forms.Button btnThanhToan;
 		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.ComboBox comboBox2;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.ComboBox cbLoaiHangHoa;
+		private System.Windows.Forms.TextBox txtTimKiemHangHoa;
+		private System.Windows.Forms.Button btnThemKH;
+		private System.Windows.Forms.ComboBox txtTenKH;
+		private System.Windows.Forms.TextBox txtTimKiemKH;
+		private System.Windows.Forms.Button btnDanhSachKH;
 		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox txtTongTien;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel3;
-		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.TextBox txtGhiChu;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;

@@ -43,5 +43,23 @@ namespace CuaHangTapHoa.WinForm.DAO
 
 			return dsHangHoa;
 		}
+
+		public List<HangHoaRead> GetAllHangHoaByLoaiHangHoa(int loaiHangHoaId)
+		{
+			string query = "EXEC usp_HangHoa_GetByCategory @LoaiHangHoaId";			
+
+			DataTable data = DataProvider.Instance.ExecuteQuery(query, loaiHangHoaId);
+			List<HangHoaRead> dsHangHoa = new List<HangHoaRead>();
+
+			if (data.Rows.Count > 0)
+			{
+				foreach (DataRow row in data.Rows)
+				{
+					dsHangHoa.Add(new HangHoaRead(row));
+				}
+			}
+
+			return dsHangHoa;
+		}
 	}
 }
