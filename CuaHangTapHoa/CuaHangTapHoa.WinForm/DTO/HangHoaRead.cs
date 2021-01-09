@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CuaHangTapHoa.WinForm.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace CuaHangTapHoa.WinForm.DTO
 		public decimal LoiNhuan => GiaBan - GiaVon; 
 		public string GiaBanStr => GiaBan.ToString("###,###,###");
 		public string GiaVonStr => GiaVon.ToString("###,###,###");
+		public string FullImagePath => DirectoryUtils.GetPathTo("data", "hang-hoa", HinhAnh) + ".jpg";
 		
 		public HangHoaRead()
 		{
