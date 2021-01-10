@@ -21,9 +21,6 @@ AS
     JOIN DonViTinh ON HangHoa.DonViTinhId = DonViTinh.Id
 GO
 
-EXECUTE usp_HangHoa_GetAll
-GO
-
 -- Create a new stored procedure called 'usp_HangHoa_GetAllActive' in schema 'dbo'
 -- Drop the stored procedure if it already exists
 IF EXISTS (

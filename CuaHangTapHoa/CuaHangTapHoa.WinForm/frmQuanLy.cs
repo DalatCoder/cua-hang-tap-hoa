@@ -15,6 +15,7 @@ namespace CuaHangTapHoa.WinForm
 	public partial class frmQuanLy : Form
 	{
 		BindingSource dsHangHoaBinding = new BindingSource();
+		List<HangHoaRead> dsHangHoa = new List<HangHoaRead>();
 
 		public frmQuanLy()
 		{
@@ -35,7 +36,14 @@ namespace CuaHangTapHoa.WinForm
 
 		void LoadDanhSachHangHoaAll()
 		{
-			dsHangHoaBinding.DataSource = HangHoaDAO.Instance.GetAllHangHoa();
+			dsHangHoa = HangHoaDAO.Instance.GetAllHangHoa();
+			dsHangHoaBinding.DataSource = dsHangHoa;
+		}
+
+		void LoadDanhSachHangHoaByName(string keyword)
+		{
+			dsHangHoa = HangHoaDAO.Instance.SearchHangHoaByTenHangHoa(keyword);
+			dsHangHoaBinding.DataSource = dsHangHoa;
 		}
 
 		void LoadDanhSachLoaiHangHoa()
@@ -103,7 +111,111 @@ namespace CuaHangTapHoa.WinForm
 			cbHHTimKiemTrangThai.SelectedIndex = -1;
 			cbHangHoaTimKiemLoaiHang.SelectedIndex = -1;
 			cbHHTimKiemDVT.SelectedIndex = -1;
-			cbHangHoaSapXep.SelectedIndex = 0;
+			cbHangHoaSapXep.SelectedIndex = -1;
+		}
+
+		private void cbHangHoaSapXep_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbHangHoaSapXep.SelectedIndex < 0) return;
+
+			if(cbHangHoaSapXep.SelectedItem.ToString().Equals("Lợi nhuận"))
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa.OrderByDescending(item => item.LoiNhuan);
+			}
+			else if (cbHangHoaSapXep.SelectedItem.ToString().Equals("Số lượng tồn"))
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa.OrderByDescending(item => item.TonKho);
+			}
+			else if (cbHangHoaSapXep.SelectedItem.ToString().Equals("Giá bán"))
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa.OrderByDescending(item => item.GiaBan);
+			}
+		}
+
+		private void txtTimKiemHangHoa_TextChanged(object sender, EventArgs e)
+		{
+			string keyword = txtTimKiemHangHoa.Text;		
+			LoadDanhSachHangHoaByName(keyword);
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			LoadDanhSachHangHoaAll();
+		}
+
+		private void cbHangHoaTimKiemLoaiHang_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbHangHoaTimKiemLoaiHang.SelectedIndex < 0) return;
+
+			LoaiHangHoa selectedCategory = cbHangHoaTimKiemLoaiHang.SelectedItem as LoaiHangHoa;
+			string tenLoai = selectedCategory.TenLoai;
+
+			if (tenLoai.Equals("Tất cả"))
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa;
+				return;
+			}
+
+			try
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa.Where(item => item.TenLoai.Equals(tenLoai));
+			} catch
+			{
+				dsHangHoaBinding.DataSource = new List<HangHoaRead>();
+			}
+		}
+
+		private void cbHHTimKiemDVT_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbHHTimKiemDVT.SelectedIndex < 0) return;
+
+			DonViTinh selectedCategory = cbHHTimKiemDVT.SelectedItem as DonViTinh;
+			string tenDVT = selectedCategory.TenDonViTinh;
+
+			if (tenDVT.Equals("Tất cả"))
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa;
+				return;
+			}
+
+			try
+			{
+				dsHangHoaBinding.DataSource = dsHangHoa.Where(item => item.DonViTinh.Equals(tenDVT));
+			}
+			catch
+			{
+				dsHangHoaBinding.DataSource = new List<HangHoaRead>();
+			}
+		}
+
+		private void cbHHTimKiemTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbHHTimKiemTrangThai.SelectedIndex < 0) return;
+
+			string trangThai = cbHHTimKiemTrangThai.SelectedItem.ToString();
+
+			try
+			{
+				if (trangThai.Equals("Tất cả"))
+				{
+					dsHangHoaBinding.DataSource = dsHangHoa;
+				}
+				else if (trangThai.Equals("Còn hàng"))
+				{
+					dsHangHoaBinding.DataSource = dsHangHoa.Where(item => item.TonKho > 0);
+				}
+				else if (trangThai.Equals("Hết hàng"))
+				{
+					dsHangHoaBinding.DataSource = dsHangHoa.Where(item => item.TonKho == 0);
+				}
+				else if (trangThai.Equals("Ngừng buôn bán"))
+				{
+					dsHangHoaBinding.DataSource = dsHangHoa.Where(item => item.TrangThai == false);
+				}
+			} catch
+			{
+				dsHangHoaBinding.DataSource = new List<HangHoaRead>();
+			}
 		}
 	}
 }
